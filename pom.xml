@@ -12,8 +12,8 @@
         </repository>
     </repositories>
 
-    <groupId>princeton</groupId>
-    <artifactId>algs-and-ds</artifactId>
+    <groupId>mcguffin0725</groupId>
+    <artifactId>princeton-algorithms</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <pluginRepositories>
@@ -29,9 +29,41 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>boggle.BoggleSolver</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/edu.princeton.cs/algs4 -->
         <dependency>
             <groupId>edu.princeton.cs</groupId>
